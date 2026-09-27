@@ -1,28 +1,38 @@
-import { BrowserRouter } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
-import Footer from "./components/Footer";
+import Layout from "./components/layout/Layout";
+import PageTransition from "./components/layout/PageTransition";
+import { useLenis } from "./hooks/useLenis";
+import { useTheme } from "./context/ThemeContext";
+
+import Home from "./pages/Home";
+import ProjectsPage from "./pages/ProjectsPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
+import ContactPage from "./pages/ContactPage";
 
 const App = () => {
+  useLenis();
+  const { theme } = useTheme();
+
   return (
-    <BrowserRouter>
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-          <Navbar />
-          <Hero />
-        </div>
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-          <Footer/>
-        </div>
-      </div>
-    </BrowserRouter>
+    <>
+      <PageTransition />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </Layout>
+      <ToastContainer position="bottom-right" theme={theme} />
+    </>
   );
-}
+};
 
 export default App;

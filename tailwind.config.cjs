@@ -1,25 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
-  mode: "jit",
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: "#050816",
-        secondary: "#aaa6c3",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        light: "#FFFFFF",
+        dark: "#1B1B1B",
+        pane: "var(--color-pane)",
+        "pane-edge": "var(--color-pane-edge)",
+        accent: "var(--color-accent)",
+        "accent-ink": "var(--color-accent-ink)",
+        "pop-pink": "#FF90E8",
+        "pop-cyan": "#00E5FF",
+        "pop-salmon": "#FFA07A",
+        "pop-violet": "#B388FF",
+        "pop-yellow": "#FFC900",
+      },
+      fontFamily: {
+        mont: ["Montserrat", "sans-serif"],
+        space: ['"Space Grotesk"', "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ["Inter", "sans-serif"],
       },
       boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
+        "brutal-sm": "2px 2px 0 0 var(--shadow-color)",
+        "brutal-md": "4px 4px 0 0 var(--shadow-color)",
+        "brutal-lg": "6px 6px 0 0 var(--shadow-color)",
+        "brutal-xl": "8px 8px 0 0 var(--shadow-color)",
       },
       screens: {
         xs: "450px",
       },
-      backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
+      transitionTimingFunction: {
+        quart: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },
